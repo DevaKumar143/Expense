@@ -10,7 +10,24 @@ const cors = require("cors");
 
 
 connectDB();
-app.use(cors());
+// app.use(cors());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://expensetrackertas.netlify.app",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS: " + origin));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 
