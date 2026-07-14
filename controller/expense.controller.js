@@ -29,9 +29,8 @@ const createExpense = async (req, res) => {
 
 const getExpenses = async (req, res) => {
   try {
-    const expenses = await Expense.find({
-      user: req.user.id,
-    }).sort({ createdAt: -1 });
+    const expenses = await Expense.find({})
+    .sort({ createdAt: -1 });
 
     const totalAmount = expenses.reduce(
       (total, expense) => total + expense.amount,

@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 router.post("/expenses", Auth, createExpense);
-router.get("/expenses",Auth, getExpenses);
+router.get("/expenses", getExpenses);
 router.get("/expenses/:id", Auth, getExpenseById);
 router.delete("/expenses/:id", Auth, deleteExpense);
 
